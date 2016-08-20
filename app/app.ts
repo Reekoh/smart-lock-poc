@@ -7,19 +7,25 @@ import {AboutPage} from './pages/about/about';
 
 @Component({
   template: `
-    <ion-menu [content]="content">
+    <ion-menu class="menu-nav" [content]="content">
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>
+        Menu
+        <img class="back-ico" src="../../images/left-icon.png">
+        </ion-title>
       </ion-toolbar>
       <ion-content>
         <ion-list>
           <button ion-item (click)="openPage(homePage)">
-            Unlock
+            <img class="img-icon" src="../../images/home-icon.png" >
+            Home
           </button>
           <button ion-item (click)="openPage(registrationPage)">
+            <img class="img-icon" src="../../images/register-icon.png" >
             Register Profile
           </button>
           <button ion-item (click)="openPage(aboutPage)">
+            <img class="img-icon" src="../../images/about-icon.png" >
             About
           </button>
         </ion-list>
