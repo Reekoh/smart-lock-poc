@@ -1,12 +1,152 @@
 // http://ionicframework.com/docs/v2/theming/
-
-
 // App Shared Imports
 // --------------------------------------------------
 // These are the imports which make up the design of this app.
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
-
 @import "../pages/about/about";
-
 @import "../pages/home/home";
+
+
+//global style declaration
+ion-header .toolbar-background{
+  background: #268de3;
+  border-color: #268de3;
+}
+ion-header img.ico-logo{
+  height: 32px;
+  width: 32px;
+  float: right;
+  margin-right: 20px;
+}
+ion-header .toolbar-title{
+  color: #fff;
+}
+ion-navbar button{
+  color: #fff !important;
+}
+.center{
+  text-align: center;
+}
+
+.center-box{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//menu nav
+.menu-nav{
+  color: #ffffff;
+}
+.menu-nav .toolbar-title{
+  color: #fff;
+}
+.menu-nav .item{
+  color: #fff;
+  font-size: 18px;
+}
+.menu-nav .toolbar-background {
+  background: #1483d9;
+  border-color: #1483d9;
+}
+.menu-nav ion-content,
+.menu-nav ion-content button {
+  background: #1483d9;
+}
+.img-icon {
+  width: 16px;
+  height: 16px;
+}
+.menu-nav ion-list > .item:first-child,
+.menu-nav ion-list > .item:last-child,
+.menu-nav ion-list > .item .item-inner
+{
+  border: none;
+}
+.menu-nav .menu-inner{
+  background: #1483d9;
+}
+.menu-nav button.item:hover{
+  background: #1069ae;
+}
+.menu-nav img.back-ico{
+  float: right;
+  height: 24px;
+}
+
+//registration pages
+.register-page{
+  background: url("../../images/main-bg.png") no-repeat;
+}
+.register-page h3{
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+.register-page ion-col{
+  margin: 25px auto;
+}
+.register-page .text-input{
+  text-align: center;
+  border-bottom: solid 1px #fff;
+  color: #fff;
+  font-size: 16px;
+}
+.register-page button{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  background: #fff;
+  color: #2c6ed2;
+  text-transform: uppercase;
+}
+.register-page button.activated{
+  background: #1069ae;
+  color: #fff;
+}
+.register-page .large-img{
+  height: 200px;
+}
+
+.register-page .text-input::-webkit-input-placeholder {
+  color: #fff;
+}
+.register-page .text-input:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+.register-page .text-input::-moz-placeholder {  /* Firefox 19+ */
+  color: #fff;
+}
+.register-page .text-input:-ms-input-placeholder {
+  color: #fff;
+}
+
+//about page
+.about{
+  background: url("../../images/main-bg.png") no-repeat;
+}
+.about ion-col{
+  margin: 0 auto;
+}
+.about .bot-center{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+.about h3{
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 50px !important;
+}
+.about p,
+.about a{
+  font-size: 16px;
+  color: #fff;
+}
+

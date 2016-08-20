@@ -4,7 +4,7 @@ import {AccountService} from '../../shared/account.service';
 declare var navigator:any;
 declare var plugins:any;
 @Component({
-  templateUrl: 'build/pages/registration/registration.html',
+  templateUrl: 'build/pages/registration/step1.html',
   providers: [AccountService]
 })
 export class RegistrationPage {
