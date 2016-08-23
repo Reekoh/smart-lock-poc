@@ -3,13 +3,33 @@
     <button menuToggle>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>
-      Registration
-    </ion-title>
+    <img class="ico-logo" src="images/reekoh-icon-logo.png">
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="registration">
-    <h2>Register new account :)</h2>
-    <button light (click)="sendImage()">Light</button>
+<ion-content padding class="register-page">
+<ion-slides #mySlider [options]="mySlideOptions">
+  <ion-slide>
+   <ion-grid class="center-box">
+    <ion-col width-75>
+      <h3>Register your name</h3>
+    </ion-col>
+    <ion-col width-75>
+      <ion-input type="text" placeholder="Name" [(ngModel)]="name"></ion-input>
+    </ion-col>
+  </ion-grid>
+      <button full large (click)="next()">Next</button>
+  </ion-slide>
+  <ion-slide>
+      <ion-grid class="center-box">
+        <ion-col width-75>
+          <h3>Take the picture</h3>
+        </ion-col>
+        <ion-col width-75 class="center">
+          <img class="large-img" src="images/camera-image.png" (click)="sendImage()">
+        </ion-col>
+      </ion-grid>
+      <button full large (click)="back()">Back</button>
+  </ion-slide>
+</ion-slides>
 </ion-content>
