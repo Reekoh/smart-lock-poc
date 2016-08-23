@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
+import {AlertController} from 'ionic-angular';
 import {Subject, Observable} from 'rxjs';
-import { Http, Response, RequestOptions, Headers, Jsonp } from '@angular/http';
+import { Http, Response, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import * as _ from 'lodash';
 import {waterfall, parallel} from 'async';
@@ -8,7 +9,6 @@ import {waterfall, parallel} from 'async';
 interface Account {
     name: string;
     image: string;
-    voices: [string];
 }
 
 @Injectable()
@@ -18,13 +18,13 @@ export class AccountService {
     private voice_options: RequestOptions;
     private account: Account;
 
-    constructor(private http: Http, private jsonp: Jsonp) {                
+    constructor(private http: Http) {                
         let face_headers = new Headers({ 'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': '7a7c53b8130d4a88a3519480d33c7102' });
-        this.face_options = new RequestOptions({ headers: face_headers });
+        this.face_options = new RequestOptions({ headers: face_headers });        
     }
 
     createFacePerson(done) {
-        let body = JSON.stringify({ name: 'Lawrence' });
+        let body = JSON.stringify({ name: this.account.name });
         let url = `${this.rootApi}face/v1.0/persongroups/smart_lock/persons`;
         this.http
             .post(url, body, this.face_options)
@@ -37,7 +37,7 @@ export class AccountService {
             })
     }
 
-    private uploadFaceImage(personId, done) {
+    private uploadFaceImage(id, done) {
         let imgUrl = 'https://api.imgur.com/3/image';
         let body = JSON.stringify({ image: this.account.image, type: 'base64' });
 
@@ -48,7 +48,7 @@ export class AccountService {
             .toPromise()
             .then((response) => {
                 let imgData = response.json();
-                done(null, personId, imgData.data.link);
+                done(null, id, imgData.data.link);
             }, (error) => {
                 done(error)
             });
@@ -79,8 +79,8 @@ export class AccountService {
                 done(error)
             });
     }
-    
-    private registerImage(data, done) {
+        
+    private registerImage(done) {
         waterfall([
             (callback) => {
                 this.createFacePerson(callback);
@@ -95,22 +95,29 @@ export class AccountService {
                 this.trainGroup(callback);
             }
         ], (error) => {
-            console.log('Error', error);
+            done(error);
         })
     }
 
-    public addAccount(account: Account) {
+    public addAccount(account: Account, done) {
         this.account = account;
-        this.registerImage(null, (error) => {
-            console.log('error',error);    
+        this.registerImage((error) => {
+            done(error);
         });
     }
 
-    public validateVoice() {
-
-    }
-
-    public validateImage() {
-
+    public validateImage(image) {
+        let url = 'http://demo1.reekoh.com:8069/reekoh/data';
+        this.http
+            .post(url, JSON.stringify({
+                image: image,
+                device: 'smart-lock',
+                personGroupId: 'smart_lock'
+            }), this.face_options)
+            .toPromise()
+            .then((response) => {
+            }, (error) => {
+                alert('Error:' + error);
+            });
     }
 }

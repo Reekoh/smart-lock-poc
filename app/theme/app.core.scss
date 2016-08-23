@@ -34,7 +34,7 @@ ion-navbar button{
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: 50%;
+  top: calc(50% - 59px);
   transform: translateY(-50%);
 }
 
@@ -81,6 +81,11 @@ ion-navbar button{
 //registration pages
 .register-page{
   background: url("../../images/main-bg.png") no-repeat;
+  padding: 0;
+}
+
+.register-page scroll-content {
+  padding: 0;
 }
 .register-page h3{
   text-transform: uppercase;
@@ -96,7 +101,7 @@ ion-navbar button{
   color: #fff;
   font-size: 16px;
 }
-.register-page button{
+.register-page button {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -115,6 +120,7 @@ ion-navbar button{
 
 .register-page .text-input::-webkit-input-placeholder {
   color: #fff;
+  font-style: italic;
 }
 .register-page .text-input:-moz-placeholder { /* Firefox 18- */
   color: #fff;
